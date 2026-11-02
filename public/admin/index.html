@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Windhoek Cookies</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ═════════════ LOGIN SCREEN ═════════════ -->
+  <div id="login-screen" class="login-screen">
+    <form id="login-form" class="login-card" autocomplete="on">
+      <h1>🍪 Admin Login</h1>
+      <p>Windhoek Cookies</p>
+      <input type="text"     name="username" placeholder="Username" required autofocus autocomplete="username" />
+      <input type="password" name="password" placeholder="Password" required autocomplete="current-password" />
+      <button type="submit" id="login-btn">Sign in</button>
+      <p id="login-error" class="error"></p>
+    </form>
+  </div>
+
+  <!-- ═════════════ DASHBOARD ═════════════ -->
+  <div id="dashboard-screen" hidden>
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <a href="/" class="admin-logo">🍪 Windhoek Cookies <span>Admin</span></a>
+        <nav class="admin-nav">
+          <button class="tab active" data-tab="overview">Overview</button>
+          <button class="tab"        data-tab="orders">Orders</button>
+          <button class="tab"        data-tab="products">Products</button>
+          <button id="logout-btn" class="btn-ghost">Logout</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- ─── OVERVIEW ─── -->
+      <section class="tab-panel active" data-panel="overview">
+        <h2>Overview</h2>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-label">Revenue — Today</div>
+            <div class="kpi-value" id="kpi-revenue-today">—</div>
+            <div class="kpi-sub"   id="kpi-profit-today">Profit: —</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Revenue — This Month</div>
+            <div class="kpi-value" id="kpi-revenue-month">—</div>
+            <div class="kpi-sub"   id="kpi-profit-month">Profit: —</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Pending Payment</div>
+            <div class="kpi-value warn" id="kpi-pending">—</div>
+            <div class="kpi-sub"        id="kpi-pending-value">—</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Avg Order Value</div>
+            <div class="kpi-value" id="kpi-aov">—</div>
+            <div class="kpi-sub"   id="kpi-total-orders">—</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Revenue — last 30 days</h3>
+          <canvas id="revenue-chart" width="900" height="280" style="width:100%;height:280px"></canvas>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3>Top Products</h3>
+            <div id="top-products"></div>
+          </div>
+          <div class="card">
+            <h3>Cash Flow</h3>
+            <div id="cashflow"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── ORDERS ─── -->
+      <section class="tab-panel" data-panel="orders">
+        <div class="panel-header">
+          <h2>Orders</h2>
+          <div class="filter-bar">
+            <select id="order-status-filter">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="paid">Paid</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <button id="refresh-orders" class="btn-ghost">Refresh</button>
+            <!-- NEW EXPORT BUTTON -->
+            <button id="export-csv-btn" class="btn-primary">📤 Export CSV</button>
+          </div>
+        </div>
+        <div class="card"><div id="orders-table"></div></div>
+      </section>
+
+      <!-- ─── PRODUCTS ─── -->
+      <section class="tab-panel" data-panel="products">
+        <div class="panel-header">
+          <h2>Products</h2>
+          <button id="add-product-btn" class="btn-primary">+ New Product</button>
+        </div>
+        <div class="card"><div id="products-table"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ═════════════ ORDER MODAL ═════════════ -->
+  <div id="order-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="order-modal">&times;</button>
+      <div id="order-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ═════════════ PRODUCT MODAL ═════════════ -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="product-modal">&times;</button>
+      <h3 id="product-modal-title">New Product</h3>
+      <form id="product-form">
+        <input type="hidden" name="id" />
+        <input type="text"   name="name"        placeholder="Product name"    required />
+        <input type="text"   name="description" placeholder="Description" />
+        <input type="number" name="price"       placeholder="Sell price (N$)" required step="0.01" min="0" />
+        <input type="number" name="cost"        placeholder="Cost price (N$)" required step="0.01" min="0" />
+        <input type="text"   name="emoji"       placeholder="Emoji (e.g. 🍪)" maxlength="4" />
+        <button type="submit" class="btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windhoek Cookies — Fresh Baked Daily</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">🍪 Windhoek Cookies</a>
+      <nav class="nav">
+        <a href="#products">Menu</a>
+        <a href="#about">About</a>
+        <button id="cart-btn" class="cart-btn">
+          🛒 Cart <span id="cart-count" class="cart-count">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Fresh Baked Cookies in Windhoek</h1>
+      <p>Handmade with love, delivered to your door.</p>
+      <a href="#products" class="btn btn-primary">Order Now</a>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <div class="container">
+      <h2>Our Cookies</h2>
+      <div id="products-grid" class="products-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        We bake fresh cookies daily in the heart of Windhoek using local ingredients
+        and bold Namibian flavours. Order online and we deliver across the city.
+      </p>
+    </div>
+  </section>
+
+  <!-- CART PANEL -->
+  <aside id="cart-panel" class="cart-panel">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart" class="close-btn" aria-label="Close cart">&times;</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: N$ <span id="cart-total">0.00</span></div>
+      <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content">
+      <button id="close-checkout" class="close-btn" aria-label="Close">&times;</button>
+      <h3>Checkout</h3>
+      <form id="checkout-form">
+        <input type="text"  name="name"    placeholder="Full Name"        required />
+        <input type="tel"   name="phone"   placeholder="Phone Number"     required />
+        <input type="text"  name="address" placeholder="Delivery Address" required />
+        <textarea           name="notes"   placeholder="Notes (optional)"></textarea>
+        <button type="submit" class="btn btn-primary">Place Order</button>
+      </form>
+      <p id="checkout-message" class="message"></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Windhoek Cookies &middot; Windhoek, Namibia</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS (order matters) -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
