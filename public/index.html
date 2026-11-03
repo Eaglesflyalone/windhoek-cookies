@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windhoek Cookies — Fresh Baked Daily</title>
+  <title>Katrina's Cookies — Fresh Baked Daily</title>
+  <meta name="description" content="Fresh baked cookies in Windhoek. Order via WhatsApp, pay with EFT, cash, or mobile money." />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
@@ -11,12 +12,13 @@
   <!-- HEADER -->
   <header class="header">
     <div class="container header-inner">
-      <a href="#" class="logo">🍪 Windhoek Cookies</a>
+      <a href="#" class="logo">🍪 Katrina's Cookies</a>
       <nav class="nav">
         <a href="#products">Menu</a>
+        <a href="#how-it-works">How to Order</a>
         <a href="#about">About</a>
         <button id="cart-btn" class="cart-btn">
-          🛒 Cart <span id="cart-count" class="cart-count">0</span>
+          Cart <span id="cart-count" class="cart-count">0</span>
         </button>
       </nav>
     </div>
@@ -25,9 +27,10 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>Fresh Baked Cookies in Windhoek</h1>
-      <p>Handmade with love, delivered to your door.</p>
-      <a href="#products" class="btn btn-primary">Order Now</a>
+      <span class="hero-eyebrow">Fresh baked in Windhoek</span>
+      <h1>Cookies that make<br /><span>your day better</span></h1>
+      <p>Order in seconds — we'll handle the rest on WhatsApp. Pay with EFT, cash, or mobile money.</p>
+      <a href="#products" class="btn btn-primary">Browse the Menu</a>
     </div>
   </section>
 
@@ -39,13 +42,38 @@
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="section how-it-works">
+    <div class="container">
+      <h2>How to Order</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Pick your cookies</h3>
+          <p>Browse the menu and add your favourites to the cart.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Checkout on WhatsApp</h3>
+          <p>Enter your details — you'll be sent to WhatsApp with the full order pre-filled.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Pay &amp; get confirmed</h3>
+          <p>Pay via EFT, cash, or mobile money. Your order is confirmed once payment is received.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about" class="section about">
     <div class="container">
       <h2>About Us</h2>
       <p>
-        We bake fresh cookies daily in the heart of Windhoek using local ingredients
-        and bold Namibian flavours. Order online and we deliver across the city.
+        Katrina bakes fresh cookies daily in the heart of Windhoek using local ingredients
+        and bold Namibian flavours. Order online, pay on WhatsApp, and we deliver
+        across the city — or arrange a pickup.
       </p>
     </div>
   </section>
@@ -58,8 +86,11 @@
     </div>
     <div id="cart-items" class="cart-items"></div>
     <div class="cart-footer">
-      <div class="cart-total">Total: N$ <span id="cart-total">0.00</span></div>
-      <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+      <div class="cart-total">
+        <span>Total</span>
+        <span>N$ <span id="cart-total">0.00</span></span>
+      </div>
+      <button id="checkout-btn" class="btn btn-whatsapp">Order via WhatsApp →</button>
     </div>
   </aside>
   <div id="overlay" class="overlay"></div>
@@ -68,26 +99,40 @@
   <div id="checkout-modal" class="modal">
     <div class="modal-content">
       <button id="close-checkout" class="close-btn" aria-label="Close">&times;</button>
-      <h3>Checkout</h3>
+      <h3>Complete Your Order</h3>
+      <p class="modal-subtitle">
+        You'll be redirected to WhatsApp with your order details to finalize payment.
+      </p>
       <form id="checkout-form">
-        <input type="text"  name="name"    placeholder="Full Name"        required />
-        <input type="tel"   name="phone"   placeholder="Phone Number"     required />
-        <input type="text"  name="address" placeholder="Delivery Address" required />
-        <textarea           name="notes"   placeholder="Notes (optional)"></textarea>
-        <button type="submit" class="btn btn-primary">Place Order</button>
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="tel"  name="phone" placeholder="Phone Number" required />
+        <select name="orderType" required>
+          <option value="">Delivery or Pickup?</option>
+          <option value="Delivery">Delivery (Windhoek)</option>
+          <option value="Pickup">Pickup</option>
+        </select>
+        <input type="text" name="address" placeholder="Delivery Address (if delivery)" />
+        <textarea name="notes" placeholder="Notes (optional) — allergies, timing, etc."></textarea>
+        <button type="submit" class="btn btn-whatsapp">
+          Continue to WhatsApp →
+        </button>
       </form>
-      <p id="checkout-message" class="message"></p>
+      <p class="payment-note">
+        💡 Payment accepted via EFT, cash, or mobile money (PayToday / EasyWallet).
+        Your order is only <strong>confirmed once payment is received</strong>.
+      </p>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Windhoek Cookies &middot; Windhoek, Namibia</p>
+      <p>&copy; 2025 Katrina's Cookies &middot; Windhoek, Namibia</p>
     </div>
   </footer>
 
   <!-- SCRIPTS (order matters) -->
+  <script src="js/config.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/checkout.js"></script>

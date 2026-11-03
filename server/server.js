@@ -67,5 +67,5 @@ module.exports = app;
 
 // Only listen locally (Vercel handles the serverless invocation)
 if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => console.log(`🍪 Server running locally at http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`🍪 Katrina's Cookies running locally at http://localhost:${PORT}`));
 }

@@ -105,7 +105,7 @@ router.get('/export', async (req, res) => {
     }
 
     res.setHeader('Content-Type', 'text/csv');
-    res.setHeader('Content-Disposition', 'attachment; filename="windhoek-cookies-sales.csv"');
+    res.setHeader('Content-Disposition', 'attachment; filename="katrinas-cookies-sales.csv"');
     res.send(csv);
   } catch (err) { res.status(500).send('Error generating CSV'); }
 });
